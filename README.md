@@ -1,5 +1,9 @@
 # Scientific Python Benchmark Pack
 
+[![CI](https://github.com/rishabhjha91/scientific-python-benchmarks/actions/workflows/ci.yml/badge.svg)](https://github.com/rishabhjha91/scientific-python-benchmarks/actions/workflows/ci.yml)
+![Python](https://img.shields.io/badge/python-3.11-blue)
+![License: MIT](https://img.shields.io/badge/license-MIT-green)
+
 A small, self-contained pack of **scientific-computing coding benchmarks** used to
 evaluate model-generated numerical code. Each task ships a fixed specification, a
 reference solution, numerical tolerances, edge cases, and an **automated verifier**
