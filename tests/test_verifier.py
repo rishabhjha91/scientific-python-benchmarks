@@ -1,4 +1,5 @@
 import numpy as np
+import pytest
 
 from scibench.verifier import VerifierReport, relative_error
 
@@ -21,3 +22,15 @@ def test_report_pass_rate():
     assert d["total"] == 2
     assert d["passed"] == 1
     assert d["pass_rate"] == 0.5
+
+
+@pytest.mark.parametrize(
+    ("approx", "exact"),
+    [
+        (np.array([[1.0, 2.0, 3.0]]), np.array([1.0, 2.0, 3.0])),
+        (np.array([1.0, 2.0]), np.array([1.0, 2.0, 3.0])),
+    ],
+)
+def test_relative_error_rejects_mismatched_shapes(approx, exact):
+    with pytest.raises(ValueError, match="same shape"):
+        relative_error(approx, exact)
