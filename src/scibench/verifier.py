@@ -11,6 +11,12 @@ def relative_error(approx, exact, ord=None) -> float:
     """Return the relative error ||approx - exact|| / ||exact|| (abs if exact==0)."""
     approx = np.asarray(approx, dtype=float)
     exact = np.asarray(exact, dtype=float)
+
+    if approx.shape != exact.shape:
+        raise ValueError(
+            "approx and exact must have the same shape, "
+            f"got {approx.shape} and {exact.shape}"
+        )
     denom = float(np.linalg.norm(exact, ord))
     diff = float(np.linalg.norm(approx - exact, ord))
     return diff / denom if denom > 0 else diff
